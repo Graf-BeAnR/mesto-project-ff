@@ -11,11 +11,13 @@ const placesList = document.querySelector('.places__list');
 const fullImage = document.querySelector('.popup__image');
 const popupImage = document.querySelector('.popup_type_image');
 const popupImageCaption = document.querySelector('.popup__caption');
-const formElement = document.forms['edit-profile'];
+const profileFormElement = document.forms['edit-profile'];
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
-const nameInput = formElement.querySelector('.popup__input_type_name');
-const jobInput = formElement.querySelector('.popup__input_type_description');
+const nameInput = profileFormElement.querySelector('.popup__input_type_name');
+const jobInput = profileFormElement.querySelector(
+	'.popup__input_type_description'
+);
 const buttonOpenProfileEdit = document.querySelector('.profile__edit-button');
 const popupProfileEdit = document.querySelector('.popup_type_edit');
 const buttonsCloseProfileEdit = document.querySelectorAll('.popup__close');
@@ -25,8 +27,8 @@ const newCard = document.querySelector('.popup_type_new-card');
 const formAdd = newCard.querySelector('.popup__form');
 const inputTypeName = newCard.querySelector('.popup__input_type_card-name');
 const inputTypeLink = newCard.querySelector('.popup__input_type_url');
-const nameInputProfile = formElement.elements.name;
-const jobInputProfile = formElement.elements.description;
+const nameInputProfile = profileFormElement.elements.name;
+const jobInputProfile = profileFormElement.elements.description;
 
 function renderCard(title, link, deleteCard, openFullImage, likeCard) {
 	const card = createCard(title, link, deleteCard, openFullImage, likeCard);
@@ -69,14 +71,14 @@ buttonsCloseProfileEdit.forEach(button => {
 
 // Редактирование информации jobInput и nameInput
 
-function handleFormSubmit(evt) {
+function handleFormProfileSubmit(evt) {
 	evt.preventDefault();
 	profileTitle.textContent = nameInput.value;
 	profileDescription.textContent = jobInput.value;
 	closePopup(popupProfileEdit);
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+profileFormElement.addEventListener('submit', handleFormProfileSubmit);
 
 // Добавление карточки "+"
 
